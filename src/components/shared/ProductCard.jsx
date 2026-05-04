@@ -102,9 +102,9 @@ const ProductCard = ({
                 </div>
 
                 {!about && (
-                    <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div className="mt-4 gap-4 sm:flex-row sm:items-end sm:justify-between">
                         {specialPrice ? (
-                            <div className="flex flex-col">
+                            <div className="flex flex-col mb-2">
                                 <span className="text-sm text-slate-400 line-through">
                                     {formatPrice(price)}
                                 </span>
@@ -129,7 +129,7 @@ const ProductCard = ({
                                 productId,
                                 quantity,
                             })}
-                            className={`flex min-w-[148px] items-center justify-center rounded-md px-3 py-2 font-semibold text-white transition-colors duration-300 ${
+                            className={`flex items-center justify-center rounded-md px-3 py-2 font-semibold text-white transition-colors duration-300 ${
                                 isAvailable ? "bg-slate-900 hover:bg-slate-700" : "bg-slate-400"
                             }`}
                         >
