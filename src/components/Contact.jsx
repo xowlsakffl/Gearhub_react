@@ -9,7 +9,7 @@ const contactItems = [
 const Contact = () => {
     return (
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
-            <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
+            <div className="mx-auto max-w-[1360px] px-4 py-10 sm:px-8 lg:px-10 xl:px-12">
                 <section className="rounded-2xl bg-white p-8 shadow-sm">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Customer Center</p>
                     <h1 className="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">고객센터</h1>
@@ -18,8 +18,8 @@ const Contact = () => {
                     </p>
                 </section>
 
-                <section className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <section className="mt-8 grid gap-6 lg:items-start lg:grid-cols-[0.95fr_1.05fr]">
+                    <div className="self-start rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h2 className="text-2xl font-bold text-slate-900">연락 정보</h2>
                         <div className="mt-6 divide-y divide-slate-100">
                             {contactItems.map((item) => (
@@ -34,7 +34,7 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <div className="self-start rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h2 className="text-2xl font-bold text-slate-900">자주 묻는 안내</h2>
                         <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
                             <p>1. 주문이 완료되면 계정 화면에서 주문 이력을 바로 확인할 수 있습니다.</p>

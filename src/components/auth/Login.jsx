@@ -38,11 +38,13 @@ const LogIn = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-70px)] bg-slate-50 px-4 py-12 font-notosans">
-            <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1fr_420px]">
-                <section className="rounded-2xl bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
+        <div className="flex min-h-[calc(100vh-70px)] items-center bg-slate-50 px-4 py-12 font-notosans">
+            <div className="mx-auto grid w-full max-w-[1360px] items-start gap-8 lg:grid-cols-[1.1fr_430px]">
+                <section className="self-start rounded-2xl bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Welcome Back</p>
-                    <h1 className="mt-4 text-3xl font-bold sm:text-4xl">지금 필요한 전자제품을 다시 이어서 둘러보세요</h1>
+                    <h1 className="mt-4 max-w-[18ch] text-3xl font-bold leading-tight sm:text-[2.15rem] xl:text-[2.35rem]">
+                        지금 필요한 전자제품을 다시 이어서 둘러보세요
+                    </h1>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
                         장바구니에 담아 둔 상품과 저장된 배송지, 최근 주문 내역을 한 번에 확인할 수 있습니다.
                     </p>
@@ -65,7 +67,7 @@ const LogIn = () => {
 
                 <form
                     onSubmit={handleSubmit(loginHandler)}
-                    className="rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
+                    className="self-start rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
                 >
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <AiOutlineLogin className="text-3xl text-slate-800" />

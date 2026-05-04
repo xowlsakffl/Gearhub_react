@@ -66,25 +66,31 @@ const Filter = ({categories}) => {
     };
 
     return (
-        <div className="flex lg:flex-row flex-col-reverse lg:justify-between justify-center gap-4">
-            <div className="relative flex items-center 2xl:w-[450px] sm:w-[420px] w-full">
-                <input type="text" placeholder="제품 검색" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-400 text-slate-800 rounded-md py-2 pl-10 pr-4 w-full focus:outline-none focus:ring-2 focus:ring-[#1976d2]" />
-                <FiSearch className="absolute left-3 text-slate-800 size={20}" />
-            </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+                <div className="relative flex w-full items-center xl:max-w-[560px]">
+                    <input
+                        type="text"
+                        placeholder="제품 검색"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full rounded-md border border-slate-300 py-3 pl-11 pr-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#1976d2]"
+                    />
+                    <FiSearch className="absolute left-4 text-slate-500" />
+                </div>
 
-            <div className="flex lg:flex-row flex-col gap-2 items-center">
+                <div className="flex flex-wrap gap-2 xl:justify-end">
                 <FormControl
                     className="text-slate-800 border-slate-700"
                     variant="outlined"
                     size="small">
                         <InputLabel id="category-select-label">카테고리</InputLabel>
                         <Select 
-                            className="min-w-[120px] text-slate-800 border-slate-700"
+                            className="min-w-[140px] text-slate-800 border-slate-700"
                             labelId="category-select-label"
                             value={category}
                             onChange={handleCategoryChange}
-                            sx={{ fontSize: '0.9rem', minWidth: '120px', color: '#1e293b' }} 
+                            sx={{ fontSize: '0.9rem', minWidth: '140px', color: '#1e293b' }} 
                             label="카테고리">
                                 <MenuItem value="all" sx={{ fontSize: '0.9rem' }}>전체</MenuItem>
                                 {categories.map((item) => (
@@ -111,12 +117,13 @@ const Filter = ({categories}) => {
                 </Tooltip>
 
                 <button
-                className="h-10 min-w-[90px] px-3 py-2 text-sm flex items-center gap-2 bg-rose-700 text-white rounded-md transition duration-300 ease-in shadow-md focus:outline-none"
+                className="flex h-10 min-w-[110px] items-center gap-2 rounded-md bg-rose-700 px-3 py-2 text-sm text-white shadow-md transition duration-300 ease-in focus:outline-none"
                 onClick={handleClearFilters}
                 >
                 <FiRefreshCw size={14} />
                     <span className="font-semibold text-sm">필터 초기화</span>
                 </button>
+            </div>
             </div>
         </div>
     );

@@ -24,7 +24,7 @@ const Products = () => {
     }, [dispatch]);
 
     return (
-        <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto font-notosans">
+        <div className="mx-auto max-w-[1560px] px-4 py-12 font-notosans sm:px-8 lg:px-10 xl:px-12">
             <Filter categories={categories ? categories : []} />
             {isLoading ? (
                 <Loader />
@@ -37,7 +37,7 @@ const Products = () => {
                 </div>
             ) : (
                 <div className="min-h-[700px]">
-                    <div className="pb-6 pt-14 grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
+                    <div className="grid gap-x-6 gap-y-6 pb-6 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                         {products &&
                             products.map((item) => <ProductCard key={item.productId} {...item} />)
                         }

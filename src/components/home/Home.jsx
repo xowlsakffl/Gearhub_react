@@ -54,7 +54,7 @@ const Home = () => {
 
     return (
         <div className="bg-slate-50 font-notosans">
-            <div className="mx-auto max-w-7xl px-4 py-6 sm:px-8 lg:px-14">
+            <div className="mx-auto max-w-[1520px] px-4 py-6 sm:px-8 lg:px-10 xl:px-12">
                 <HeroBanner />
 
                 <section className="mt-8">

@@ -65,7 +65,7 @@ const AccountDashboard = () => {
 
     return (
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
-            <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
+            <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-8 lg:px-10 xl:px-12">
                 <section className="rounded-2xl bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-300">My Account</p>
                     <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -111,7 +111,7 @@ const AccountDashboard = () => {
                     ))}
                 </section>
 
-                <section className="mt-8 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+                <section className="mt-8 grid gap-6 lg:items-start lg:grid-cols-[1.5fr_1fr]">
                     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                         <div className="flex items-center justify-between">
                             <div>

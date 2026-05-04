@@ -27,11 +27,11 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-70px)] bg-slate-50 px-4 py-12 font-notosans">
-            <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1fr_420px]">
-                <section className="rounded-2xl bg-white px-6 py-8 shadow-lg sm:px-8">
+        <div className="flex min-h-[calc(100vh-70px)] items-center bg-slate-50 px-4 py-12 font-notosans">
+            <div className="mx-auto grid w-full max-w-[1360px] items-start gap-8 lg:grid-cols-[1.1fr_430px]">
+                <section className="self-start rounded-2xl bg-white px-6 py-8 shadow-lg sm:px-8">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Join GearHub</p>
-                    <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+                    <h1 className="mt-4 max-w-[18ch] text-3xl font-bold leading-tight text-slate-900 sm:text-[2.15rem] xl:text-[2.35rem]">
                         자주 쓰는 전자제품 쇼핑을 위한 계정 만들기
                     </h1>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
@@ -54,7 +54,7 @@ const Register = () => {
 
                 <form
                     onSubmit={handleSubmit(registerHandler)}
-                    className="rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
+                    className="self-start rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
                 >
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <FaUserPlus className="text-3xl text-slate-800" />

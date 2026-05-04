@@ -47,7 +47,7 @@ const OrderHistory = () => {
 
     return (
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
-            <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
+            <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-8 lg:px-10 xl:px-12">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div>
                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Order History</p>

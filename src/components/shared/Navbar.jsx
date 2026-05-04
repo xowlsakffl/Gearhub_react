@@ -22,7 +22,7 @@ const Navbar = () => {
 
     return (
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-            <div className="mx-auto flex h-[70px] max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-14">
+            <div className="mx-auto flex h-[70px] max-w-[1520px] items-center justify-between px-4 sm:px-8 lg:px-10 xl:px-12">
                 <Link to="/" className="flex items-center gap-3">
                     <span className="rounded-full bg-slate-900 p-2 text-white">
                         <FaLaptop className="text-lg" />

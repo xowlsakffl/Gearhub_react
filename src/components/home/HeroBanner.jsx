@@ -26,12 +26,12 @@ const HeroBanner = () => {
                 {bannerLists.map((item, index) => (
                     <SwiperSlide key={item.id}>
                         <div className={`overflow-hidden rounded-[28px] ${colors[index]} shadow-lg`}>
-                            <div className="grid min-h-[340px] items-center gap-8 px-6 py-8 lg:grid-cols-[1.35fr_0.65fr] lg:px-12">
+                            <div className="grid min-h-[330px] items-center gap-8 px-6 py-8 lg:grid-cols-[1.35fr_0.65fr] lg:px-12 xl:min-h-[320px]">
                                 <div className="order-2 lg:order-1">
                                     <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-300">
                                         GearHub Electronics
                                     </p>
-                                    <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[3rem]">
+                                    <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.7rem] xl:text-[2.85rem]">
                                         {item.title}
                                     </h2>
                                     <p className="mt-3 text-base font-semibold text-slate-200 sm:text-lg">{item.subtitle}</p>

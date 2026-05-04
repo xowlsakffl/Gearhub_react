@@ -9,10 +9,10 @@ const About = () => {
 
     return (
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
-            <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
+            <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-8 lg:px-10 xl:px-12">
                 <section className="rounded-2xl bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-300">About GearHub</p>
-                    <h1 className="mt-4 text-3xl font-bold sm:text-4xl">
+                    <h1 className="mt-4 max-w-[18ch] text-3xl font-bold leading-tight sm:text-[2.35rem] xl:text-[2.6rem]">
                         일상에서 자주 쓰는 전자제품을 더 간결하게 고르는 방법
                     </h1>
                     <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
@@ -21,7 +21,7 @@ const About = () => {
                     </p>
                 </section>
 
-                <section className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+                <section className="mt-8 grid gap-6 lg:items-start lg:grid-cols-[1.2fr_0.8fr]">
                     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h2 className="text-2xl font-bold text-slate-900">브랜드 기준</h2>
                         <div className="mt-6 space-y-5">

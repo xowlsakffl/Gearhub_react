@@ -19,7 +19,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="lg:px-14 sm:px-8 px-4 py-10 font-notosans">
+        <div className="mx-auto max-w-[1440px] px-4 py-10 font-notosans sm:px-8 lg:px-10 xl:px-12">
             <div className="flex flex-col items-center mb-12">
                 <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                   <MdShoppingCart size={28} className="text-gray-700" />
