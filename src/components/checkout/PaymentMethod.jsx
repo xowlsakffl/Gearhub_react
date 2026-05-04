@@ -37,7 +37,7 @@ const PaymentMethod = () => {
                     <FormControlLabel
                         value="Demo"
                         control={<Radio color="primary" />}
-                        label="테스트 주문"
+                        label="기본 결제"
                         className="text-gray-700"
                     />
 

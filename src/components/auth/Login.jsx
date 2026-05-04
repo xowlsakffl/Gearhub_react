@@ -8,9 +8,9 @@ import InputField from "../shared/InputField";
 import Spinners from "../shared/Spinners";
 import { authenticateSignInUser } from "../../store/actions";
 
-const demoAccounts = [
-    { label: "구매자 데모", username: "demo", password: "password123!" },
-    { label: "관리자 데모", username: "admin", password: "admin1234!" },
+const quickAccounts = [
+    { label: "일반 계정", username: "demo", password: "password123!" },
+    { label: "운영 계정", username: "admin", password: "admin1234!" },
 ];
 
 const LogIn = () => {
@@ -32,7 +32,7 @@ const LogIn = () => {
         dispatch(authenticateSignInUser(data, toast, reset, navigate, setLoader));
     };
 
-    const applyDemoAccount = (account) => {
+    const applyQuickAccount = (account) => {
         setValue("username", account.username, { shouldValidate: true });
         setValue("password", account.password, { shouldValidate: true });
     };
@@ -41,19 +41,18 @@ const LogIn = () => {
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 px-4 py-12 font-notosans">
             <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1fr_420px]">
                 <section className="rounded-2xl bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
-                    <p className="text-sm uppercase tracking-[0.2em] text-slate-300">GearHub Demo Access</p>
-                    <h1 className="mt-4 text-3xl font-bold sm:text-4xl">실행형 이커머스 포트폴리오에 바로 로그인</h1>
+                    <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Welcome Back</p>
+                    <h1 className="mt-4 text-3xl font-bold sm:text-4xl">지금 필요한 전자제품을 다시 이어서 둘러보세요</h1>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
-                        장바구니, 체크아웃, 테스트 주문, 주문 이력까지 연결된 상태로 확인할 수 있게
-                        데모 계정을 함께 제공합니다.
+                        장바구니에 담아 둔 상품과 저장된 배송지, 최근 주문 내역을 한 번에 확인할 수 있습니다.
                     </p>
 
                     <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                        {demoAccounts.map((account) => (
+                        {quickAccounts.map((account) => (
                             <button
                                 key={account.label}
                                 type="button"
-                                onClick={() => applyDemoAccount(account)}
+                                onClick={() => applyQuickAccount(account)}
                                 className="rounded-xl border border-slate-700 bg-slate-800/70 p-4 text-left transition hover:border-slate-500 hover:bg-slate-800"
                             >
                                 <p className="font-semibold text-white">{account.label}</p>
@@ -66,12 +65,12 @@ const LogIn = () => {
 
                 <form
                     onSubmit={handleSubmit(loginHandler)}
-                    className="rounded-2xl bg-white py-8 shadow-lg sm:px-8 px-4"
+                    className="rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
                 >
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <AiOutlineLogin className="text-3xl text-slate-800" />
                         <h2 className="text-center text-2xl font-bold text-slate-800 sm:text-3xl">로그인</h2>
-                        <p className="text-sm text-slate-500">GearHub 계정으로 주문 흐름을 확인하세요.</p>
+                        <p className="text-sm text-slate-500">계정에 저장된 주문과 배송 정보를 확인하세요.</p>
                     </div>
 
                     <hr className="mb-5 mt-4 text-black" />

@@ -50,14 +50,14 @@ const HeroBanner = () => {
                                             className="rounded-md border border-slate-500 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-200"
                                             to="/login"
                                         >
-                                            데모 로그인
+                                            로그인
                                         </Link>
                                     </div>
 
                                     <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-300">
                                         <span>컴퓨팅 · 오디오 · 게이밍</span>
                                         <span>모바일 액세서리</span>
-                                        <span>주문 이력 연동</span>
+                                        <span>인기 할인 상품</span>
                                     </div>
                                 </div>
 

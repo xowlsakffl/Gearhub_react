@@ -30,7 +30,7 @@ const StripePayment = () => {
             <div className="max-w-lg mx-auto">
                 <Alert severity="warning">
                     <AlertTitle>Stripe 키 없음</AlertTitle>
-                    로컬 데모에서는 테스트 주문을 사용하거나 환경 변수에 Stripe 공개 키를 넣어 주세요.
+                    카드 결제를 사용하려면 Stripe 공개 키를 먼저 설정해 주세요. 현재는 기본 결제를 이용할 수 있습니다.
                 </Alert>
             </div>
         );

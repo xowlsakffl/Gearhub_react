@@ -39,7 +39,7 @@ const OrderHistory = () => {
 
     if (loading) {
         return (
-            <div className="min-h-[calc(100vh-70px)] flex items-center justify-center bg-slate-50">
+            <div className="flex min-h-[calc(100vh-70px)] items-center justify-center bg-slate-50">
                 <Loader />
             </div>
         );
@@ -50,10 +50,10 @@ const OrderHistory = () => {
             <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">GearHub Orders</p>
+                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Order History</p>
                         <h1 className="mt-2 text-3xl font-bold text-slate-900">주문 이력</h1>
                         <p className="mt-2 text-sm text-slate-500">
-                            테스트 주문을 포함해 계정에 쌓인 모든 주문 흐름을 확인할 수 있습니다.
+                            계정에 저장된 주문 내역과 상품 구성을 한눈에 확인할 수 있습니다.
                         </p>
                     </div>
                     <Link
@@ -75,7 +75,7 @@ const OrderHistory = () => {
                         <FaBoxOpen className="mx-auto text-3xl text-slate-400" />
                         <h2 className="mt-4 text-xl font-bold text-slate-900">아직 주문 이력이 없습니다</h2>
                         <p className="mt-2 text-sm text-slate-500">
-                            장바구니에서 체크아웃으로 이동해 테스트 주문을 완료하면 이 화면에 이력이 쌓입니다.
+                            상품을 담은 뒤 결제를 완료하면 이 화면에서 주문 내역을 확인할 수 있습니다.
                         </p>
                     </div>
                 ) : null}

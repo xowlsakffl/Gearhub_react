@@ -32,18 +32,17 @@ const Register = () => {
                 <section className="rounded-2xl bg-white px-6 py-8 shadow-lg sm:px-8">
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Join GearHub</p>
                     <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-                        워크스페이스와 라이프스타일 기어를 위한 계정 만들기
+                        자주 쓰는 전자제품 쇼핑을 위한 계정 만들기
                     </h1>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
-                        장바구니 저장, 배송지 관리, 주문 이력 확인까지 이어지는 기본 사용자 흐름을
-                        모두 실험해 볼 수 있는 데모 스토어입니다.
+                        계정을 만들면 장바구니 저장, 배송지 관리, 주문 이력 확인까지 더 편하게 이어서 사용할 수 있습니다.
                     </p>
 
                     <div className="mt-8 grid gap-4 sm:grid-cols-3">
                         {[
-                            { title: "장바구니 유지", desc: "로그인 후 체크아웃 전환이 자연스럽게 이어집니다." },
-                            { title: "배송지 관리", desc: "저장된 배송지를 선택해 주문에 연결합니다." },
-                            { title: "주문 이력", desc: "테스트 주문 결과가 계정 화면에 쌓입니다." },
+                            { title: "장바구니 유지", desc: "담아 둔 상품을 로그인 후에도 바로 이어서 확인할 수 있습니다." },
+                            { title: "배송지 관리", desc: "저장된 배송지를 다음 주문에도 다시 선택할 수 있습니다." },
+                            { title: "주문 이력", desc: "이전에 주문한 제품과 결제 정보를 한곳에서 확인할 수 있습니다." },
                         ].map((item) => (
                             <div key={item.title} className="rounded-xl bg-slate-50 p-4">
                                 <p className="font-semibold text-slate-900">{item.title}</p>
@@ -55,12 +54,12 @@ const Register = () => {
 
                 <form
                     onSubmit={handleSubmit(registerHandler)}
-                    className="rounded-2xl bg-white py-8 shadow-lg sm:px-8 px-4"
+                    className="rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
                 >
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <FaUserPlus className="text-3xl text-slate-800" />
                         <h2 className="text-center text-2xl font-bold text-slate-800 sm:text-3xl">회원가입</h2>
-                        <p className="text-sm text-slate-500">기본 계정을 만들고 로그인 흐름을 확인하세요.</p>
+                        <p className="text-sm text-slate-500">기본 정보를 입력하고 쇼핑을 시작하세요.</p>
                     </div>
 
                     <hr className="mb-5 mt-4 text-black" />

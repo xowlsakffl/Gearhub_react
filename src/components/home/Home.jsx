@@ -61,7 +61,7 @@ const Home = () => {
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                                Electronics Categories
+                                인기 카테고리
                             </p>
                             <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
                                 카테고리로 바로 고르기
@@ -123,7 +123,7 @@ const Home = () => {
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                                Featured Electronics
+                                추천 상품
                             </p>
                             <h2 className="mt-2 text-3xl font-bold text-slate-900">
                                 {selectedCategory === "all" ? "지금 바로 보기 좋은 대표 상품" : `${selectedCategory} 추천 상품`}
@@ -135,8 +135,8 @@ const Home = () => {
 
                         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
                             <span>카테고리 {categorySummary.length}개</span>
-                            <span>데모 계정 주문 가능</span>
-                            <span>주문 이력 연동</span>
+                            <span>할인 상품 중심</span>
+                            <span>주문 이력 확인</span>
                         </div>
                     </div>
 

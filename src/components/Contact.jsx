@@ -2,8 +2,8 @@ import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 const contactItems = [
     { icon: <FaPhoneAlt className="text-slate-900" />, label: "대표 연락처", value: "+82 10-0000-0000" },
-    { icon: <FaEnvelope className="text-slate-900" />, label: "이메일", value: "gearhub.demo@local.dev" },
-    { icon: <FaMapMarkedAlt className="text-slate-900" />, label: "운영 위치", value: "Seoul, Republic of Korea" },
+    { icon: <FaEnvelope className="text-slate-900" />, label: "이메일", value: "support@gearhub.local" },
+    { icon: <FaMapMarkedAlt className="text-slate-900" />, label: "운영 위치", value: "서울, 대한민국" },
 ];
 
 const Contact = () => {
@@ -11,11 +11,10 @@ const Contact = () => {
         <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
             <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
                 <section className="rounded-2xl bg-white p-8 shadow-sm">
-                    <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Contact</p>
-                    <h1 className="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">프로젝트 문의</h1>
+                    <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Customer Center</p>
+                    <h1 className="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">고객센터</h1>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
-                        GearHub는 전자제품 중심 이커머스 데모를 목표로 만든 프로젝트입니다.
-                        구현 범위와 확장 방향을 빠르게 이해할 수 있도록 핵심 정보만 남겼습니다.
+                        주문, 배송지, 결제 관련 정보를 빠르게 확인할 수 있도록 자주 찾는 안내만 정리했습니다.
                     </p>
                 </section>
 
@@ -36,19 +35,19 @@ const Contact = () => {
                     </div>
 
                     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                        <h2 className="text-2xl font-bold text-slate-900">논의하기 좋은 주제</h2>
+                        <h2 className="text-2xl font-bold text-slate-900">자주 묻는 안내</h2>
                         <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
-                            <p>1. 전자제품 전용 카테고리를 더 촘촘하게 나눌지, 브랜드 축을 추가할지</p>
-                            <p>2. 관리자 상품 등록과 이미지 업로드를 어떤 권한 체계로 확장할지</p>
-                            <p>3. 데모 결제를 실제 PG 연동으로 바꿀 때 필요한 결제/주문 상태 전이</p>
-                            <p>4. 재고 부족, 취소, 환불 같은 후속 흐름을 어떻게 모델링할지</p>
+                            <p>1. 주문이 완료되면 계정 화면에서 주문 이력을 바로 확인할 수 있습니다.</p>
+                            <p>2. 배송지는 체크아웃 화면에서 저장하고 다음 주문에도 이어서 사용할 수 있습니다.</p>
+                            <p>3. 카드 결제와 간편결제는 선택한 수단에 따라 순서대로 이용할 수 있습니다.</p>
+                            <p>4. 품절 상품은 장바구니 담기 버튼이 비활성화되어 바로 구분됩니다.</p>
                         </div>
 
                         <div className="mt-8 rounded-xl bg-slate-900 p-5 text-white">
-                            <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Next Step</p>
+                            <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Shopping Guide</p>
                             <p className="mt-3 text-sm leading-7 text-slate-300">
-                                지금 단계에서 가장 가치 큰 확장은 관리자 상품 운영 화면과 실제 결제 상태 전이입니다.
-                                리뷰, 커뮤니티 같은 주변 기능보다 이쪽이 훨씬 설득력 있습니다.
+                                원하는 제품을 찾은 뒤 장바구니에 담고, 배송지와 결제 수단을 선택하면 주문이 완료됩니다.
+                                완료된 주문은 마이페이지에서 다시 확인할 수 있습니다.
                             </p>
                         </div>
                     </div>
