@@ -6,6 +6,7 @@ import HeroBanner from "./HeroBanner";
 import ProductCard from "../shared/ProductCard";
 import Loader from "../shared/Loader";
 import { fetchCategories, fetchProducts } from "../../store/actions";
+
 const getCategoryName = (product) =>
     product?.categoryName || product?.category?.categoryName || "기타";
 
@@ -29,9 +30,10 @@ const Home = () => {
 
     const featuredProducts = useMemo(() => {
         const baseProducts = [...(products || [])];
-        const categoryFiltered = selectedCategory === "all"
-            ? baseProducts
-            : baseProducts.filter((item) => getCategoryName(item) === selectedCategory);
+        const categoryFiltered =
+            selectedCategory === "all"
+                ? baseProducts
+                : baseProducts.filter((item) => getCategoryName(item) === selectedCategory);
 
         return categoryFiltered.sort((left, right) => {
             const discountGap = Number(right.discount || 0) - Number(left.discount || 0);
@@ -53,7 +55,7 @@ const Home = () => {
             <div className="mx-auto max-w-[1520px] px-4 py-6 sm:px-8 lg:px-10 xl:px-12">
                 <HeroBanner />
 
-                <section className="mt-8">
+                <section className="mt-8 rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
@@ -62,27 +64,27 @@ const Home = () => {
                             <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
                                 카테고리로 바로 고르기
                             </h2>
-                            <p className="mt-2 text-sm text-slate-500">
-                                컴퓨팅, 오디오, 게이밍, 모바일 액세서리 중심으로 상품을 빠르게 좁힐 수 있습니다.
+                            <p className="mt-2 text-sm leading-6 text-slate-500">
+                                컴퓨팅, 오디오, 게이밍, 모바일 액세서리 중심으로 필요한 제품만 빠르게 모아볼 수 있습니다.
                             </p>
                         </div>
 
                         <Link
                             to="/products"
-                            className="text-sm font-semibold text-slate-700 underline underline-offset-4"
+                            className="inline-flex items-center text-sm font-semibold text-slate-700 underline underline-offset-4"
                         >
                             전체 상품 보기
                         </Link>
                     </div>
 
-                    <div className="mt-5 flex flex-wrap gap-3">
+                    <div className="mt-6 flex flex-wrap gap-3">
                         <button
                             type="button"
                             onClick={() => setSelectedCategory("all")}
                             className={`rounded-full border px-4 py-3 text-left text-sm font-semibold transition ${
                                 selectedCategory === "all"
                                     ? "border-slate-900 bg-slate-900 text-white"
-                                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+                                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-400 hover:bg-white"
                             }`}
                         >
                             전체 상품
@@ -99,7 +101,7 @@ const Home = () => {
                                 className={`rounded-full border px-4 py-3 text-left text-sm font-semibold transition ${
                                     selectedCategory === category.categoryName
                                         ? "border-slate-900 bg-slate-900 text-white"
-                                        : "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+                                        : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-400 hover:bg-white"
                                 }`}
                             >
                                 {category.categoryName}
@@ -115,7 +117,7 @@ const Home = () => {
                     </div>
                 </section>
 
-                <section className="mt-10">
+                <section className="mt-8 rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
@@ -124,37 +126,35 @@ const Home = () => {
                             <h2 className="mt-2 text-3xl font-bold text-slate-900">
                                 {selectedCategory === "all" ? "지금 바로 보기 좋은 대표 상품" : `${selectedCategory} 추천 상품`}
                             </h2>
-                            <p className="mt-2 text-sm text-slate-500">
-                                할인율과 재고 상태를 기준으로 먼저 보기 좋은 상품을 위로 정렬했습니다.
+                            <p className="mt-2 text-sm leading-6 text-slate-500">
+                                할인율과 재고 상태를 기준으로 먼저 보기 좋은 제품을 우선 정렬했습니다.
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
-                            <span>카테고리 {categorySummary.length}개</span>
-                            <span>할인 상품 중심</span>
-                            <span>주문 이력 확인</span>
+                        <div className="flex flex-wrap gap-2 text-sm text-slate-500">
+                            <span className="rounded-full bg-slate-100 px-3 py-2">카테고리 {categorySummary.length}개</span>
+                            <span className="rounded-full bg-slate-100 px-3 py-2">할인 상품 중심</span>
+                            <span className="rounded-full bg-slate-100 px-3 py-2">빠른 재고 확인</span>
                         </div>
                     </div>
 
                     {isLoading ? (
                         <Loader />
                     ) : errorMessage ? (
-                        <div className="mt-6 flex h-[220px] items-center justify-center rounded-2xl border border-slate-200 bg-white">
+                        <div className="mt-6 flex h-[220px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50">
                             <FaExclamationTriangle className="mr-2 text-3xl text-slate-700" />
                             <span className="text-lg font-medium text-slate-800">{errorMessage}</span>
                         </div>
+                    ) : featuredProducts.length ? (
+                        <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
+                            {featuredProducts.slice(0, 10).map((item) => (
+                                <ProductCard key={item.productId} {...item} />
+                            ))}
+                        </div>
                     ) : (
-                        featuredProducts.length ? (
-                            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
-                                {featuredProducts.slice(0, 10).map((item) => (
-                                    <ProductCard key={item.productId} {...item} />
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="mt-6 flex min-h-[280px] items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white text-sm text-slate-500">
-                                선택한 카테고리에 등록된 상품이 없습니다.
-                            </div>
-                        )
+                        <div className="mt-6 flex min-h-[280px] items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 text-sm text-slate-500">
+                            선택한 카테고리에 등록된 상품이 없습니다.
+                        </div>
                     )}
                 </section>
             </div>

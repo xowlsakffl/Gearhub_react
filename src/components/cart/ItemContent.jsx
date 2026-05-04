@@ -14,20 +14,13 @@ const ItemContent = ({
     description,
     quantity,
     price,
-    discount,
     specialPrice,
-    cartId,
-  }) => {
+}) => {
     const [currentQuantity, setCurrentQuantity] = useState(quantity);
     const dispatch = useDispatch();
 
     const handleQtyIncrease = (cartItems) => {
-        dispatch(increaseCartQuantity(
-            cartItems,
-            toast,
-            currentQuantity,
-            setCurrentQuantity
-        ));
+        dispatch(increaseCartQuantity(cartItems, toast, currentQuantity, setCurrentQuantity));
     };
 
     const handleQtyDecrease = (cartItems) => {
@@ -41,75 +34,96 @@ const ItemContent = ({
     const removeItemFromCart = (cartItems) => {
         dispatch(removeFromCart(cartItems, toast));
     };
-    
+
     return (
-        <div className="grid md:grid-cols-5 grid-cols-4 md:text-md text-sm gap-4   items-center  border-[1px] border-slate-200  rounded-md  lg:px-4  py-4 p-2">
-            <div className="md:col-span-2 justify-self-start flex  flex-col gap-2 ">
-                <div className="flex md:flex-row flex-col lg:gap-4 sm:gap-3 gap-0 items-start ">
-                   <h3 className="lg:text-[17px] text-sm font-semibold text-slate-600">
-                    {truncateText(productName)}
-                   </h3>
+        <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <div className="flex flex-1 gap-4">
+                    <div className="flex h-[120px] w-[120px] shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(180deg,#f8fafc,#eef2ff)] p-3">
+                        <img
+                            src={image}
+                            alt={productName}
+                            className="h-full w-full object-contain"
+                        />
+                    </div>
+
+                    <div className="flex min-w-0 flex-1 flex-col justify-between">
+                        <div>
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                                장바구니 상품
+                            </p>
+                            <h3 className="mt-2 text-lg font-semibold text-slate-900">
+                                {truncateText(productName, 40)}
+                            </h3>
+                            <p className="mt-2 max-w-[56ch] text-sm leading-6 text-slate-500">
+                                {truncateText(description, 120)}
+                            </p>
+                        </div>
+
+                        <button
+                            onClick={() => removeItemFromCart({
+                                image,
+                                productName,
+                                description,
+                                specialPrice,
+                                price,
+                                productId,
+                                quantity,
+                            })}
+                            className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:border-rose-300 hover:bg-rose-100"
+                        >
+                            <HiOutlineTrash size={16} />
+                            삭제
+                        </button>
+                    </div>
                 </div>
 
-                <div className="md:w-36 sm:w-24 w-12">
-                    <img 
-                        src={image}
-                        alt={productName}
-                        className="md:h-36 sm:h-24 h-12 w-full object-cover rounded-md"/>
-                
+                <div className="grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-3 lg:min-w-[460px] lg:bg-white lg:p-0 lg:border-0">
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">판매가</p>
+                        <div className="mt-2 text-lg font-semibold text-slate-900">
+                            {formatPrice(Number(specialPrice))}
+                        </div>
+                    </div>
 
-                <div className="flex items-start gap-5 mt-3">
-                    <button
-                        onClick={() => removeItemFromCart({
-                            image,
-                            productName,
-                            description,
-                            specialPrice,
-                            price,
-                            productId,
-                            quantity,
-                        })}
-                        className="flex items-center font-semibold space-x-2 px-4 py-1 text-xs border border-rose-600 text-rose-600 rounded-md hover:bg-red-50 transition-colors duration-200">
-                        <HiOutlineTrash size={16} className="text-rose-600"/>
-                        삭제
-                    </button>
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">수량</p>
+                        <div className="mt-2">
+                            <SetQuantity
+                                quantity={currentQuantity}
+                                cardCounter
+                                handeQtyIncrease={() => handleQtyIncrease({
+                                    image,
+                                    productName,
+                                    description,
+                                    specialPrice,
+                                    price,
+                                    productId,
+                                    quantity,
+                                })}
+                                handleQtyDecrease={() => handleQtyDecrease({
+                                    image,
+                                    productName,
+                                    description,
+                                    specialPrice,
+                                    price,
+                                    productId,
+                                    quantity,
+                                })}
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">합계</p>
+                        <div className="mt-2 text-lg font-semibold text-slate-900">
+                            {formatPrice(Number(currentQuantity) * Number(specialPrice))}
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
-                {formatPrice(Number(specialPrice))}
-            </div>
-
-            <div className="justify-self-center">
-                <SetQuantity 
-                    quantity={currentQuantity}
-                    cardCounter={true}
-                    handeQtyIncrease={() => handleQtyIncrease({
-                        image,
-                        productName,
-                        description,
-                        specialPrice,
-                        price,
-                        productId,
-                        quantity,
-                    })}
-                    handleQtyDecrease={() => {handleQtyDecrease({
-                        image,
-                        productName,
-                        description,
-                        specialPrice,
-                        price,
-                        productId,
-                        quantity,
-                    })}}/>
-            </div>
-
-            <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
-                {formatPrice(Number(currentQuantity) * Number(specialPrice))}
-            </div>
         </div>
-    )
+    );
 };
 
 export default ItemContent;

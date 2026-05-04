@@ -29,17 +29,25 @@ const HeroBanner = () => {
             >
                 {bannerLists.map((item, index) => (
                     <SwiperSlide key={item.id}>
-                        <div className={`relative overflow-hidden rounded-[28px] bg-gradient-to-r ${gradients[index]} shadow-[0_18px_45px_rgba(15,23,42,0.12)]`}>
+                        <div
+                            className={`relative overflow-hidden rounded-[30px] bg-gradient-to-r ${gradients[index]} shadow-[0_18px_45px_rgba(15,23,42,0.12)]`}
+                        >
                             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_45%,rgba(255,255,255,0.03))]" />
                             <div className="absolute right-[-48px] top-[-48px] h-56 w-56 rounded-[36px] border border-white/10 bg-white/5 blur-[2px]" />
                             <div className="absolute bottom-[-72px] left-[44%] h-44 w-44 rounded-[32px] border border-white/10 bg-white/5" />
 
-                            <div className="relative grid min-h-[360px] items-center gap-8 px-6 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 xl:min-h-[360px] xl:px-14">
+                            <div className="relative grid min-h-[380px] items-center gap-8 px-6 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 xl:px-14">
                                 <div className="order-2 lg:order-1">
-                                    <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70 sm:text-sm">
-                                        GearHub Electronics
-                                    </p>
-                                    <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.6rem] xl:text-[2.85rem]">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <span className="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
+                                            오늘의 셀렉션
+                                        </span>
+                                        <span className="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">
+                                            {item.categoryLabel}
+                                        </span>
+                                    </div>
+
+                                    <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] xl:text-[3rem]">
                                         {item.title}
                                     </h2>
                                     <p className="mt-4 text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200 sm:text-base">
@@ -51,13 +59,13 @@ const HeroBanner = () => {
 
                                     <div className="mt-8 flex flex-wrap gap-3">
                                         <Link
-                                            className="rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                                            className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
                                             to="/products"
                                         >
                                             전체 상품 보기
                                         </Link>
                                         <Link
-                                            className="rounded-md border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+                                            className="rounded-xl border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
                                             to="/login"
                                         >
                                             로그인
@@ -77,7 +85,7 @@ const HeroBanner = () => {
                                 </div>
 
                                 <div className="order-1 flex items-center justify-center lg:order-2">
-                                    <div className="relative w-full max-w-[520px]">
+                                    <div className="relative w-full max-w-[540px]">
                                         <div className="absolute -right-5 bottom-6 hidden rounded-2xl border border-white/20 bg-white px-4 py-3 text-slate-900 shadow-lg md:block">
                                             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-400">
                                                 인기 포인트
@@ -85,7 +93,7 @@ const HeroBanner = () => {
                                             <p className="mt-2 text-sm font-semibold">{item.highlight}</p>
                                         </div>
 
-                                        <div className="flex h-[240px] w-full items-center justify-center rounded-[30px] border border-white/35 bg-white/95 p-5 shadow-[0_28px_70px_rgba(15,23,42,0.18)] lg:h-[300px] lg:p-7">
+                                        <div className="flex h-[250px] w-full items-center justify-center rounded-[30px] border border-white/35 bg-white/95 p-5 shadow-[0_28px_70px_rgba(15,23,42,0.18)] lg:h-[315px] lg:p-7">
                                             <div className="flex h-full w-full items-center justify-center rounded-[22px] bg-[linear-gradient(135deg,#f8fafc,#eef2ff)] p-4">
                                                 <img
                                                     src={item.image}
