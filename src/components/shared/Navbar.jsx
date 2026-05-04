@@ -1,6 +1,6 @@
 import { Badge } from "@mui/material";
 import { useState } from "react";
-import { FaHeadphones, FaSignInAlt, FaShoppingCart } from "react-icons/fa";
+import { FaLaptop, FaSignInAlt, FaShoppingCart } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
@@ -25,11 +25,11 @@ const Navbar = () => {
             <div className="mx-auto flex h-[70px] max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-14">
                 <Link to="/" className="flex items-center gap-3">
                     <span className="rounded-full bg-slate-900 p-2 text-white">
-                        <FaHeadphones className="text-lg" />
+                        <FaLaptop className="text-lg" />
                     </span>
                     <div>
                         <p className="text-lg font-bold text-slate-900">GearHub</p>
-                        <p className="hidden text-xs text-slate-500 sm:block">Workspace, audio, gaming, mobile</p>
+                        <p className="hidden text-xs text-slate-500 sm:block">컴퓨팅 · 오디오 · 게이밍 · 모바일 액세서리</p>
                     </div>
                 </Link>
 

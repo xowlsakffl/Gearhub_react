@@ -70,10 +70,10 @@ const AccountDashboard = () => {
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-300">GearHub Account</p>
                     <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                         <div>
-                            <h1 className="text-3xl font-bold sm:text-4xl">{user?.username}님의 쇼핑 대시보드</h1>
+                            <h1 className="text-3xl font-bold sm:text-4xl">{user?.username}님의 전자제품 쇼핑 대시보드</h1>
                             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
-                                워크스페이스, 오디오, 게이밍, 모바일 기어를 한 곳에서 고르고
-                                주문 내역과 배송지를 빠르게 관리할 수 있게 정리했습니다.
+                                컴퓨팅, 오디오, 게이밍, 모바일 액세서리 구매 흐름을
+                                한 화면에서 확인할 수 있도록 필요한 정보만 남겼습니다.
                             </p>
                         </div>
 
@@ -116,9 +116,9 @@ const AccountDashboard = () => {
                     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                         <div className="flex items-center justify-between">
                             <div>
-                                <h2 className="text-xl font-bold text-slate-900">추천 사용 흐름</h2>
+                                <h2 className="text-xl font-bold text-slate-900">빠른 확인 흐름</h2>
                                 <p className="mt-1 text-sm text-slate-500">
-                                    포트폴리오 데모를 빠르게 확인할 수 있는 핵심 화면만 남겼습니다.
+                                    장식성 블록은 줄이고, 주문 검증에 필요한 단계만 남겼습니다.
                                 </p>
                             </div>
                             <Link to="/checkout" className="text-sm font-semibold text-slate-700 underline">
@@ -126,16 +126,19 @@ const AccountDashboard = () => {
                             </Link>
                         </div>
 
-                        <div className="mt-6 grid gap-4 md:grid-cols-3">
+                        <div className="mt-6 divide-y divide-slate-100">
                             {[
-                                { step: "01", title: "상품 탐색", desc: "카테고리와 검색으로 원하는 기어를 찾습니다." },
-                                { step: "02", title: "장바구니 구성", desc: "데모 계정 기준 장바구니가 미리 채워져 있습니다." },
-                                { step: "03", title: "테스트 주문", desc: "실제 PG 없이 주문/이력/재고 흐름을 확인합니다." },
+                                { step: "01", title: "상품 탐색", desc: "카테고리와 검색으로 원하는 전자제품을 고릅니다." },
+                                { step: "02", title: "장바구니 확인", desc: "데모 계정에 미리 채워 둔 장바구니로 수량과 금액을 바로 검증합니다." },
+                                { step: "03", title: "테스트 주문", desc: "실제 PG 없이 체크아웃과 주문 생성 흐름을 끝까지 확인합니다." },
+                                { step: "04", title: "주문 이력 확인", desc: "주문 완료 후 이력 화면에서 후속 데이터를 검증합니다." },
                             ].map((item) => (
-                                <div key={item.step} className="rounded-xl bg-slate-50 p-4">
-                                    <p className="text-xs font-bold tracking-[0.3em] text-slate-400">{item.step}</p>
-                                    <h3 className="mt-3 font-semibold text-slate-900">{item.title}</h3>
-                                    <p className="mt-2 text-sm leading-6 text-slate-500">{item.desc}</p>
+                                <div key={item.step} className="flex gap-4 py-4 first:pt-0 last:pb-0">
+                                    <p className="min-w-[42px] text-xs font-bold tracking-[0.25em] text-slate-400">{item.step}</p>
+                                    <div>
+                                        <h3 className="font-semibold text-slate-900">{item.title}</h3>
+                                        <p className="mt-1 text-sm leading-6 text-slate-500">{item.desc}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>

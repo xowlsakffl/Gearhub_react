@@ -312,7 +312,7 @@ export const submitDemoOrder =
             dispatch({ type: "CLEAR_CART" });
             dispatch({ type: "IS_SUCCESS" });
             toast.success("테스트 주문이 완료되었습니다.");
-            navigate("/");
+            navigate("/account/orders");
         } catch (error) {
             console.log(error);
             dispatch({

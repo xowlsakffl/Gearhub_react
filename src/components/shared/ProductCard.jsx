@@ -5,12 +5,15 @@ import truncateText from "../../utils/truncateText";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/actions";
 import toast from "react-hot-toast";
+import { formatPrice } from "../../utils/formatPrice";
 
 const ProductCard = ({
     productId,
     productName,
     image,
     description,
+    category,
+    categoryName,
     quantity,
     price,
     discount,
@@ -21,6 +24,7 @@ const ProductCard = ({
     const btnLoader = false;
     const [selectedViewProduct, setSelectedViewProduct] = useState("");
     const isAvailable = quantity && Number(quantity) > 0;
+    const resolvedCategoryName = categoryName || category?.categoryName || "전자기기";
     const dispatch = useDispatch();
 
     const handleProductView = (product) => {
@@ -31,11 +35,11 @@ const ProductCard = ({
     };
 
     const addToCartHandler = (cartItems) => {
-        dispatch(addToCart(cartItems, 1, toast))
+        dispatch(addToCart(cartItems, 1, toast));
     };
 
     return (
-        <div className="border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             <div
                 onClick={() => {
                     handleProductView({
@@ -43,13 +47,14 @@ const ProductCard = ({
                         productName,
                         image,
                         description,
+                        categoryName: resolvedCategoryName,
                         quantity,
                         price,
                         discount,
                         specialPrice,
                     });
                 }}
-                className="relative w-full overflow-hidden aspect-[3/2]"
+                className="relative w-full overflow-hidden aspect-[16/11] bg-slate-50"
             >
                 <div className="absolute left-3 top-3 z-10 flex flex-wrap gap-2">
                     {discount > 0 ? (
@@ -65,46 +70,55 @@ const ProductCard = ({
                         {isAvailable ? `재고 ${quantity}개` : "품절"}
                     </span>
                 </div>
-                <img src={image} className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105" alt={productName}>
-                </img>
+                <img
+                    src={image}
+                    className="h-full w-full cursor-pointer object-contain p-4 transition-transform duration-300 hover:scale-105"
+                    alt={productName}
+                />
             </div>
-            <div className="p-4">
-                <h2 onClick={() => {
-                    handleProductView({
-                        id: productId,
-                        productName,
-                        image,
-                        description,
-                        quantity,
-                        price,
-                        discount,
-                        specialPrice,
-                    });
-                }} className="text-lg font-semibold mb-2 cursor-pointer">{truncateText(productName, 20)}</h2>
+            <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{resolvedCategoryName}</p>
+                <h2
+                    onClick={() => {
+                        handleProductView({
+                            id: productId,
+                            productName,
+                            image,
+                            description,
+                            categoryName: resolvedCategoryName,
+                            quantity,
+                            price,
+                            discount,
+                            specialPrice,
+                        });
+                    }}
+                    className="mb-2 mt-2 cursor-pointer text-lg font-semibold text-slate-900"
+                >
+                    {truncateText(productName, 24)}
+                </h2>
 
-                <div className="min-h-20 max-h-20">
-                    <p className="text-gray-600 text-sm">{truncateText(description, 80)}</p>
+                <div className="max-h-20 min-h-20">
+                    <p className="text-sm text-slate-600">{truncateText(description, 84)}</p>
                 </div>
-                
+
                 {!about && (
-                    <div className="flex items-center justify-between">
+                    <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         {specialPrice ? (
-                        <div className="flex flex-col">
-                            <span className="text-gray-400 line-through">
-                                {new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW" }).format(price)}
-                            </span>
-                            <span className="text-xl font-bold text-slate-700">
-                                {new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW" }).format(specialPrice)}
-                            </span>
-                        </div>
+                            <div className="flex flex-col">
+                                <span className="text-sm text-slate-400 line-through">
+                                    {formatPrice(price)}
+                                </span>
+                                <span className="text-xl font-bold text-slate-900">
+                                    {formatPrice(specialPrice)}
+                                </span>
+                            </div>
                         ) : (
-                            <span className="text-xl font-bold text-slate-700">
-                                {"  "}
-                                {new Intl.NumberFormat("ko-KR", { style: "currency", currency: "KRW" }).format(price)}
+                            <span className="text-xl font-bold text-slate-900">
+                                {formatPrice(price)}
                             </span>
                         )}
 
-                        <button 
+                        <button
                             disabled={!isAvailable || btnLoader}
                             onClick={() => addToCartHandler({
                                 image,
@@ -115,20 +129,22 @@ const ProductCard = ({
                                 productId,
                                 quantity,
                             })}
-                            className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600" : "opacity-70"}
-                            text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-40 flex justify-center`}>
+                            className={`flex min-w-[148px] items-center justify-center rounded-md px-3 py-2 font-semibold text-white transition-colors duration-300 ${
+                                isAvailable ? "bg-slate-900 hover:bg-slate-700" : "bg-slate-400"
+                            }`}
+                        >
                             <FaShoppingCart className="mr-2" />
                             {isAvailable ? "장바구니 추가" : "품절"}
                         </button>
                     </div>
                 )}
-                
             </div>
-            <ProductViewModal 
-                open={openProductViewModal} 
-                setOpen={setOpenProductViewModal} 
-                product={selectedViewProduct} 
-                isAvailable={isAvailable} />
+            <ProductViewModal
+                open={openProductViewModal}
+                setOpen={setOpenProductViewModal}
+                product={selectedViewProduct}
+                isAvailable={isAvailable}
+            />
         </div>
     );
 };
