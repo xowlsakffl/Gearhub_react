@@ -7,7 +7,7 @@ import "swiper/css/effect-fade";
 import { Link } from "react-router-dom";
 import { bannerLists } from "../../utils";
 
-const colors = ["bg-slate-950", "bg-[#162033]", "bg-[#0f2942]"];
+const colors = ["bg-slate-950", "bg-[#111c2d]", "bg-[#0d2437]"];
 
 const HeroBanner = () => {
     return (
@@ -62,11 +62,11 @@ const HeroBanner = () => {
                                 </div>
 
                                 <div className="order-1 flex items-center justify-center lg:order-2">
-                                    <div className="flex h-[220px] w-full max-w-[620px] items-center justify-center lg:h-[280px]">
+                                    <div className="flex h-[220px] w-full max-w-[520px] items-center justify-center rounded-[26px] bg-white p-5 shadow-[0_24px_60px_rgba(15,23,42,0.24)] lg:h-[280px] lg:p-6">
                                         <img
                                             src={item.image}
                                             alt={item.subtitle}
-                                            className="h-full w-full rounded-2xl object-cover object-center"
+                                            className="h-full w-full object-contain object-center"
                                         />
                                     </div>
                                 </div>
