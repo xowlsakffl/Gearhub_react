@@ -1,77 +1,61 @@
-import { FaEnvelope, FaMapMarkedAlt, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
+
+const contactItems = [
+    { icon: <FaPhoneAlt className="text-slate-900" />, label: "대표 연락처", value: "+82 10-0000-0000" },
+    { icon: <FaEnvelope className="text-slate-900" />, label: "이메일", value: "gearhub.demo@local.dev" },
+    { icon: <FaMapMarkedAlt className="text-slate-900" />, label: "운영 위치", value: "Seoul, Republic of Korea" },
+];
 
 const Contact = () => {
-    return(
-        <div
-            className="flex flex-col items-center justify-center min-h-screen py-12 bg-cover bg-center font-notosans"
-            style={{backgroundImage: "url('')"}}>
-            
-            <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
-                <h1 className="text-4xl font-bold text-center mb-6">Contact us</h1>
-                <p className="text-gray-600 text-center mb-4">
-                    문의 사항이 있으시면 언제든 연락 주세요!
-                </p>
+    return (
+        <div className="min-h-[calc(100vh-70px)] bg-slate-50 font-notosans">
+            <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
+                <section className="rounded-2xl bg-white p-8 shadow-sm">
+                    <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Contact</p>
+                    <h1 className="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">프로젝트 문의</h1>
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
+                        GearHub는 포트폴리오와 데모 검증을 목적으로 만든 프로젝트입니다.
+                        구현 범위, 기술 선택, 확장 방향에 대해 논리적으로 이야기할 수 있도록 핵심 정보를 정리했습니다.
+                    </p>
+                </section>
 
-                <form className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                            이름
-                        </label>
-                        <input 
-                            type="text"
-                            required
-                            className="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus: ring-blue-500"/>
-                    </div>
-
-
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                            이메일
-                        </label>
-                        <input 
-                            type="email"
-                            required
-                            className="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus: ring-blue-500"/>
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                            내용
-                        </label>
-                        <textarea 
-                            rows="4"
-                            required
-                            className="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus: ring-blue-500"/>
-                    </div>
-
-                    <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300">
-                        보내기
-                    </button>
-                </form>
-
-                <div className="mt-8 text-center">
-                    <h2 className="text-lg font-semibold">고객센터</h2>
-                    <div className="flex flex-col items-center space-y-2 mt-4">
-                        <div className="flex items-center">
-                            <FaPhone className="text-blue-500 mr-2"/>
-                            <span className="text-gray-600">+820000000</span>
-                        </div>
-
-                        <div className="flex items-center">
-                            <FaEnvelope className="text-blue-500 mr-2"/>
-                            <span className="text-gray-600">ms1114@kakao.com</span>
-                        </div>
-
-                        <div className="flex items-center">
-                            <FaMapMarkedAlt className="text-blue-500 mr-2"/>
-                            <span className="text-gray-600">경기도 용인시 OOO</span>
+                <section className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                        <h2 className="text-2xl font-bold text-slate-900">연락 정보</h2>
+                        <div className="mt-6 space-y-4">
+                            {contactItems.map((item) => (
+                                <div key={item.label} className="flex items-start gap-4 rounded-xl bg-slate-50 p-4">
+                                    <div className="rounded-full bg-white p-3 shadow-sm">{item.icon}</div>
+                                    <div>
+                                        <p className="text-sm font-semibold text-slate-900">{item.label}</p>
+                                        <p className="mt-1 text-sm text-slate-500">{item.value}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                </div>
+
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                        <h2 className="text-2xl font-bold text-slate-900">논의하기 좋은 주제</h2>
+                        <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
+                            <p>1. H2 기반 로컬 실행과 MySQL 운영 환경을 어떻게 분리할지</p>
+                            <p>2. 관리자 상품 등록/이미지 업로드를 어떤 권한 체계로 확장할지</p>
+                            <p>3. Stripe 외 PG 연동을 실제 서비스 수준으로 끌어올릴 방법</p>
+                            <p>4. 주문 상태 변경, 취소, 환불 흐름을 추가할 때 필요한 데이터 모델</p>
+                        </div>
+
+                        <div className="mt-8 rounded-xl bg-slate-900 p-5 text-white">
+                            <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Next Step</p>
+                            <p className="mt-3 text-sm leading-7 text-slate-300">
+                                현재 데모는 조회, 장바구니, 체크아웃, 주문 이력까지는 충분히 설명 가능합니다.
+                                다음 단계는 관리자 기능과 실제 결제/주문 상태 전이를 붙이는 쪽이 맞습니다.
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
-            
         </div>
     );
-}
+};
 
 export default Contact;

@@ -4,22 +4,22 @@ export const bannerLists = [
     {
         id: 1,
         image: bannerImageOne,
-        title: "편안한 우리집",
-        subtitle: "거실 인테리어",
-        description: "아늑하고 스타일리시한 소파로 공간을 업그레이드하세요",
+        title: "업무 몰입을 높이는 셀렉션",
+        subtitle: "Workspace Gear",
+        description: "모니터 암, 키보드, 데스크 액세서리처럼 바로 체감되는 작업 환경 장비를 큐레이션했습니다.",
     },
     {
         id: 2,
         image: bannerImageTwo,
-        title: "엔터테인먼트의 중심",
-        subtitle: "스마트 TV",
-        description: "최신 홈 엔터테인먼트를 경험해보세요",
+        title: "사운드와 몰입을 위한 업그레이드",
+        subtitle: "Audio Essentials",
+        description: "헤드폰과 스피커를 중심으로 재택과 휴식을 모두 커버하는 오디오 장비를 모았습니다.",
     },
     {
         id: 3,
         image: bannerImageThree,
-        title: "아이들을 위한 선택",
-        subtitle: "아동 의류",
-        description: "밝고 재미있는 스타일, 최대 20% 할인",
-    }
+        title: "플레이 환경까지 한 번에",
+        subtitle: "Gaming & Mobile",
+        description: "게임패드, 마우스, 충전 스탠드까지 일상과 플레이를 연결하는 기어를 빠르게 둘러볼 수 있습니다.",
+    },
 ];

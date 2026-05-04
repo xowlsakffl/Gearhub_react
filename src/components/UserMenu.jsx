@@ -1,10 +1,11 @@
-import { Avatar, Button, Menu, MenuItem } from '@mui/material';
-import React from 'react'
-import { IoExitOutline } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import BackDrop from './BackDrop';
-import { logOutUser } from '../store/actions';
+import { Avatar, Menu, MenuItem } from "@mui/material";
+import React from "react";
+import { IoExitOutline } from "react-icons/io5";
+import { FaBoxOpen, FaUserCircle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import BackDrop from "./BackDrop";
+import { logOutUser } from "../store/actions";
 
 const UserMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,69 +15,66 @@ const UserMenu = () => {
     const navigate = useNavigate();
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
 
     const logOutHandler = () => {
-      dispatch(logOutUser(navigate));
+        handleClose();
+        dispatch(logOutUser(navigate));
     };
-  
+
     return (
-      <div className='relative z-30'>
-        <div
-        className='sm:border-[1px] sm:border-slate-400 flex flex-row items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition text-slate-700'
-          onClick={handleClick}
-        >
-          <Avatar alt='Menu' sx={{width: 24, height:24}} src=''/>
-        </div>
-        <Menu
-          sx={{ width:"400px" }}
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-            sx: {width: 160},
-          }}
-        >
+        <div className="relative z-30">
+            <button
+                type="button"
+                className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-2 py-1 text-slate-700 transition hover:shadow-md"
+                onClick={handleClick}
+            >
+                <Avatar sx={{ width: 28, height: 28, bgcolor: "#0f172a", fontSize: 14 }}>
+                    {user?.username?.slice(0, 1)?.toUpperCase() || "G"}
+                </Avatar>
+                <span className="hidden text-sm font-semibold sm:block">{user?.username}</span>
+            </button>
 
-          <Link to="/profile">
-            <MenuItem className="flex gap-1" 
-                onClick={handleClose}>
-                    <span className='font-bold text-[16px] mt-1'>
-                        {user?.username}
-                    </span>
-            </MenuItem>
-          </Link>
+            <Menu
+                id="user-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    "aria-labelledby": "user-menu",
+                    sx: { width: 190 },
+                }}
+            >
+                <Link to="/account">
+                    <MenuItem className="!flex !items-center !gap-2" onClick={handleClose}>
+                        <FaUserCircle className="text-slate-500" />
+                        <span className="font-semibold">내 계정</span>
+                    </MenuItem>
+                </Link>
 
-          <Link to="/profile/orders">
-            <MenuItem className="flex gap-1" 
-                onClick={handleClose}>
-                    <span className='font-semibold'>
-                        주문 내역
-                    </span>
-            </MenuItem>
-          </Link>
+                <Link to="/account/orders">
+                    <MenuItem className="!flex !items-center !gap-2" onClick={handleClose}>
+                        <FaBoxOpen className="text-slate-500" />
+                        <span className="font-semibold">주문 이력</span>
+                    </MenuItem>
+                </Link>
 
-            <MenuItem className="flex gap-1" 
-                onClick={logOutHandler}>
-                    <div className='font-semibold w-full flex gap-2 items-center bg-button-gradient px-4 py-1 text-white rounded-sm'>
-                    <IoExitOutline className='text-xl'/>
-                    <span className='font-bold text-[16px] mt-1'>
-                        로그아웃
-                    </span>
+                <MenuItem className="!p-2" onClick={logOutHandler}>
+                    <div className="flex w-full items-center justify-center gap-2 rounded-md bg-slate-900 px-4 py-2 text-white">
+                        <IoExitOutline className="text-xl" />
+                        <span className="font-bold">로그아웃</span>
                     </div>
-            </MenuItem>
+                </MenuItem>
+            </Menu>
 
-        </Menu>
-
-        {open && <BackDrop />}
-      </div>
+            {open && <BackDrop />}
+        </div>
     );
-}
+};
 
-export default UserMenu
+export default UserMenu;

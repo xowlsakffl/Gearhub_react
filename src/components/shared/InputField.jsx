@@ -8,55 +8,50 @@ const InputField = ({
     message,
     className,
     min,
-    value,
     placeholder,
-    readOnly
+    readOnly,
 }) => {
     return (
-        <div className="flex flex-col gap-1 w-full font-notosans">
+        <div className="flex w-full flex-col gap-1 font-notosans">
             <label
                 htmlFor={id}
-                className={`${
-                    className ? className : ""
-                } font-semibold text-sm text-slate-800`}>
+                className={`${className ? className : ""} text-sm font-semibold text-slate-800`}
+            >
                 {label}
             </label>
             <input
                 type={type}
                 id={id}
                 placeholder={placeholder}
-                className={`px-2 py-2 border outline-none text-slate-800 rounded-md
-                    ${readOnly ? "bg-gray-100" : "bg-transparent"} 
-                    ${errors[id]?.message ? "border-red-500" : "border-slate-700"} 
-                    ${className ? className : ""}
-                `}
+                className={`rounded-md border px-3 py-2 text-slate-800 outline-none ${
+                    readOnly ? "bg-gray-100" : "bg-transparent"
+                } ${errors[id]?.message ? "border-red-500" : "border-slate-300"} ${className ? className : ""}`}
                 readOnly={readOnly}
                 {...register(id, {
-                    required: {value: required, message},
+                    required: { value: required, message },
                     minLength: min
-                        ? { value: min, message: `최소 ${min}자 이상 입력해주세요. `}
-                        : null,
+                        ? { value: min, message: `최소 ${min}자 이상 입력해 주세요.` }
+                        : undefined,
                     pattern:
                         type === "email"
                             ? {
-                                value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+com+$/,
-                                message: "이메일 형식에 부합하지 않습니다."
+                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                message: "이메일 형식이 올바르지 않습니다.",
                             }
                             : type === "url"
-                            ? {
-                                value: /^(https?:\/\/)?(([a-zA-Z0-9\u00a1-\uffff-]+\.)+[a-zA-Z\u00a1-\uffff]{2,})(:\d{2,5})?(\/[^\s]*)?$/,
-                                message: "URL 형식에 부합하지 않습니다."
-                            }
-                            : null,
-
+                                ? {
+                                    value: /^(https?:\/\/)?(([a-zA-Z0-9\u00a1-\uffff-]+\.)+[a-zA-Z\u00a1-\uffff]{2,})(:\d{2,5})?(\/[^\s]*)?$/,
+                                    message: "URL 형식이 올바르지 않습니다.",
+                                }
+                                : undefined,
                 })}
-                />
+            />
 
-                {errors[id]?.message && (
-                    <p className="text-sm font-semibold text-red-600 mt-0">
-                        {errors[id]?.message}
-                    </p>
-                )}
+            {errors[id]?.message && (
+                <p className="mt-0 text-sm font-semibold text-red-600">
+                    {errors[id]?.message}
+                </p>
+            )}
         </div>
     );
 };

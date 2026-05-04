@@ -14,6 +14,8 @@ import Register from './components/auth/Register';
 import Checkout from './components/checkout/Checkout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAddresses, getUserCart } from './store/actions';
+import AccountDashboard from './components/account/AccountDashboard';
+import OrderHistory from './components/account/OrderHistory';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +43,8 @@ function App() {
 
           <Route path='/' element={<PrivateRoute />}>
             <Route path='/checkout' element={ <Checkout />}/>
+            <Route path='/account' element={<AccountDashboard />} />
+            <Route path='/account/orders' element={<OrderHistory />} />
           </Route>
           
           <Route path='/' element={ <PrivateRoute publicPage /> }>

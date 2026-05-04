@@ -36,18 +36,35 @@ const ProductCard = ({
 
     return (
         <div className="border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
-            <div onClick={() => {
-                handleProductView({
-                    id: productId,
-                    productName,
-                    image,
-                    description,
-                    quantity,
-                    price,
-                    discount,
-                    specialPrice,
-                });
-            }} className="w-full overflow-hidden aspect-[3/2]">
+            <div
+                onClick={() => {
+                    handleProductView({
+                        id: productId,
+                        productName,
+                        image,
+                        description,
+                        quantity,
+                        price,
+                        discount,
+                        specialPrice,
+                    });
+                }}
+                className="relative w-full overflow-hidden aspect-[3/2]"
+            >
+                <div className="absolute left-3 top-3 z-10 flex flex-wrap gap-2">
+                    {discount > 0 ? (
+                        <span className="rounded-full bg-rose-600 px-3 py-1 text-xs font-semibold text-white">
+                            {discount}% 할인
+                        </span>
+                    ) : null}
+                    <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                            isAvailable ? "bg-emerald-600 text-white" : "bg-slate-700 text-white"
+                        }`}
+                    >
+                        {isAvailable ? `재고 ${quantity}개` : "품절"}
+                    </span>
+                </div>
                 <img src={image} className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105" alt={productName}>
                 </img>
             </div>

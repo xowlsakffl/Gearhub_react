@@ -129,7 +129,7 @@ export const authenticateSignInUser =
             ]);
             reset();
             toast.success("로그인에 성공했습니다.");
-            navigate("/");
+            navigate("/account/orders");
         } catch (error) {
             console.log(error);
             toast.error(error?.response?.data?.message || "로그인 중 오류가 발생했습니다.");
