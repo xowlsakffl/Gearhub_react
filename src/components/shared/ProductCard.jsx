@@ -50,7 +50,7 @@ const ProductCard = ({
     };
 
     return (
-        <div className="flex h-full flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+        <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             <div
                 onClick={() => handleProductView(productPayload)}
                 className="relative aspect-[16/11] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fafc,#eef2ff)]"
@@ -71,7 +71,7 @@ const ProductCard = ({
                 </div>
                 <img
                     src={image}
-                    className="h-full w-full cursor-pointer object-contain p-4 transition-transform duration-300 hover:scale-105"
+                    className="h-full w-full cursor-pointer object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     alt={productName}
                 />
             </div>
