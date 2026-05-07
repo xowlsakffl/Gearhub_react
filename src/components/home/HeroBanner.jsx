@@ -34,8 +34,6 @@ const HeroBanner = () => {
                         >
                             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_45%,rgba(255,255,255,0.03))]" />
                             <div className="absolute right-[-48px] top-[-48px] h-56 w-56 rounded-[36px] border border-white/10 bg-white/5 blur-[2px]" />
-                            <div className="absolute bottom-[-72px] left-[44%] h-44 w-44 rounded-[32px] border border-white/10 bg-white/5" />
-
                             <div className="relative grid min-h-[380px] items-center gap-8 px-6 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 xl:px-14">
                                 <div className="order-2 lg:order-1">
                                     <div className="flex flex-wrap items-center gap-3">
