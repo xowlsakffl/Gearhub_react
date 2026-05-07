@@ -1,7 +1,7 @@
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPaymentMethod, createUserCart } from "../../store/actions";
+import { addPaymentMethod } from "../../store/actions";
 
 const paymentMethods = [
     { value: "Demo", label: "데모 결제" },
@@ -13,31 +13,7 @@ const paymentMethods = [
 
 const PaymentMethod = () => {
     const dispatch = useDispatch();
-    const syncedCartSignature = useRef("");
     const { paymentMethod } = useSelector((state) => state.payment);
-    const { cart } = useSelector((state) => state.carts);
-    const { errorMessage } = useSelector((state) => state.errors);
-
-    useEffect(() => {
-        if (!cart?.length || errorMessage) {
-            return;
-        }
-
-        const sendCartItems = cart
-            .filter((item) => item?.productId && Number(item?.quantity) > 0)
-            .map((item) => ({
-                productId: item.productId,
-                quantity: Number(item.quantity),
-            }));
-
-        const cartSignature = JSON.stringify(sendCartItems);
-        if (!sendCartItems.length || syncedCartSignature.current === cartSignature) {
-            return;
-        }
-
-        syncedCartSignature.current = cartSignature;
-        dispatch(createUserCart(sendCartItems));
-    }, [dispatch, cart, errorMessage]);
 
     const paymentMethodHandler = (method) => {
         dispatch(addPaymentMethod(method));
