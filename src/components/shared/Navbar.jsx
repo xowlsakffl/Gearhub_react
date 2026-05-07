@@ -10,8 +10,6 @@ import UserMenu from "../UserMenu";
 const navItems = [
     { label: "홈", to: "/" },
     { label: "스토어", to: "/products" },
-    { label: "브랜드 소개", to: "/about" },
-    { label: "문의", to: "/contact" },
 ];
 
 const Navbar = () => {
