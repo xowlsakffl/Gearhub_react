@@ -1,6 +1,6 @@
 import { Avatar, Menu, MenuItem } from "@mui/material";
 import React from "react";
-import { IoExitOutline } from "react-icons/io5";
+import { IoExitOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
 import { FaBoxOpen, FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const UserMenu = () => {
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const isAdmin = user?.roles?.includes("ROLE_ADMIN");
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -47,9 +48,18 @@ const UserMenu = () => {
                 onClose={handleClose}
                 MenuListProps={{
                     "aria-labelledby": "user-menu",
-                    sx: { width: 190 },
+                    sx: { width: 210 },
                 }}
             >
+                {isAdmin && (
+                    <Link to="/admin">
+                        <MenuItem className="!flex !items-center !gap-2" onClick={handleClose}>
+                            <IoShieldCheckmarkOutline className="text-slate-500" />
+                            <span className="font-semibold">관리자</span>
+                        </MenuItem>
+                    </Link>
+                )}
+
                 <Link to="/account">
                     <MenuItem className="!flex !items-center !gap-2" onClick={handleClose}>
                         <FaUserCircle className="text-slate-500" />
@@ -60,7 +70,7 @@ const UserMenu = () => {
                 <Link to="/account/orders">
                     <MenuItem className="!flex !items-center !gap-2" onClick={handleClose}>
                         <FaBoxOpen className="text-slate-500" />
-                        <span className="font-semibold">주문 이력</span>
+                        <span className="font-semibold">주문 내역</span>
                     </MenuItem>
                 </Link>
 

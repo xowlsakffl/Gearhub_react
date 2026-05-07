@@ -1,20 +1,12 @@
 import './App.css';
-import Products from './components/products/Products';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/home/Home';
-import Navbar from './components/shared/Navbar';
-import Cart from './components/cart/Cart';
 import { Toaster } from 'react-hot-toast';
 import React, { useEffect } from 'react';
-import LogIn from './components/auth/Login';
 import PrivateRoute from './components/PrivateRoute';
-import Register from './components/auth/Register';
-import Checkout from './components/checkout/Checkout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAddresses, getUserCart } from './store/actions';
-import AccountDashboard from './components/account/AccountDashboard';
-import OrderHistory from './components/account/OrderHistory';
-import ProductDetail from './components/products/ProductDetail';
+import ShopRoutes from './modules/shop/ShopRoutes';
+import AdminRoutes from './modules/admin/AdminRoutes';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,23 +24,11 @@ function App() {
   return (
     <React.Fragment>
       <Router>
-        <Navbar />
         <Routes>
-          <Route path='/' element={ <Home /> } />
-          <Route path='/products' element={ <Products /> } />
-          <Route path='/products/:productId' element={ <ProductDetail /> } />
-          <Route path='/cart' element={ <Cart /> } />
-
-          <Route path='/' element={<PrivateRoute />}>
-            <Route path='/checkout' element={ <Checkout />}/>
-            <Route path='/account' element={<AccountDashboard />} />
-            <Route path='/account/orders' element={<OrderHistory />} />
+          <Route path="/admin/*" element={<PrivateRoute requiredRoles={["ROLE_ADMIN"]} />}>
+            <Route path="*" element={<AdminRoutes />} />
           </Route>
-          
-          <Route path='/' element={ <PrivateRoute publicPage /> }>
-            <Route path='/login' element={ <LogIn /> } />
-            <Route path='/register' element={ <Register /> } />
-          </Route>
+          <Route path="/*" element={<ShopRoutes />} />
         </Routes>
       </Router>
       <Toaster position='bottom-center' />
