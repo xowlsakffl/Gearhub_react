@@ -306,10 +306,25 @@ export const createStripePaymentSecret =
     };
 
 export const submitDemoOrder =
-    (sendData, toast, navigate, setLoading) => async (dispatch) => {
+    (sendData, toast, navigate, setLoading) => async (dispatch, getState) => {
         try {
             setLoading(true);
             dispatch({ type: "IS_FETCHING" });
+            const cartItems = getState().carts.cart || [];
+            const sendCartItems = cartItems
+                .filter((item) => item?.productId && Number(item?.quantity) > 0)
+                .map((item) => ({
+                    productId: item.productId,
+                    quantity: Number(item.quantity),
+                }));
+
+            if (sendCartItems.length === 0) {
+                dispatch({ type: "IS_ERROR", payload: "주문할 상품이 없습니다." });
+                toast.error("주문할 상품이 없습니다.");
+                return;
+            }
+
+            await api.post("/cart/create", sendCartItems);
             await api.post("/order/users/payments/demo", sendData);
             localStorage.removeItem("CHECKOUT_ADDRESS");
             localStorage.removeItem("cartItems");

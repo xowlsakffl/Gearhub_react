@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { submitDemoOrder } from "../../store/actions";
+import { formatPrice } from "../../utils/formatPrice";
 
 const DemoPayment = () => {
     const dispatch = useDispatch();
@@ -27,10 +28,10 @@ const DemoPayment = () => {
                 {
                     addressId: selectedUserCheckoutAddress.addressId,
                     paymentMethod: "Demo",
-                    pgName: "Basic Checkout",
+                    pgName: "GearHub Demo Checkout",
                     pgPaymentId: `demo-${Date.now()}`,
                     pgStatus: "PAID",
-                    pgResponseMessage: `주문 접수 완료: ${totalPrice}`,
+                    pgResponseMessage: `데모 결제 승인: ${totalPrice}`,
                 },
                 toast,
                 navigate,
@@ -40,24 +41,24 @@ const DemoPayment = () => {
     };
 
     return (
-        <div className="mx-auto max-w-lg rounded-lg border bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold text-slate-800">기본 결제</h2>
-            <p className="mt-3 text-sm text-slate-600 leading-6">
-                선택한 배송지와 상품 정보를 확인한 뒤 바로 주문을 완료할 수 있습니다.
+        <div className="mx-auto max-w-lg rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900">데모 결제</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+                실제 결제 승인 없이 현재 장바구니와 배송지 정보로 주문을 생성합니다.
             </p>
 
-            <div className="mt-6 rounded-lg bg-slate-50 border border-slate-200 p-4 text-sm text-slate-700 space-y-2">
-                <div className="flex justify-between">
-                    <span>선택한 배송지</span>
-                    <span>{selectedUserCheckoutAddress?.title || "-"}</span>
+            <div className="mt-6 space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+                <div className="flex justify-between gap-4">
+                    <span className="font-semibold text-slate-500">배송지</span>
+                    <span className="text-right font-bold">{selectedUserCheckoutAddress?.title || "-"}</span>
                 </div>
-                <div className="flex justify-between">
-                    <span>주문 상품 수</span>
-                    <span>{cart?.length || 0}개</span>
+                <div className="flex justify-between gap-4">
+                    <span className="font-semibold text-slate-500">주문 상품</span>
+                    <span className="font-bold">{cart?.length || 0}개</span>
                 </div>
-                <div className="flex justify-between">
-                    <span>결제 방식</span>
-                    <span>기본 결제</span>
+                <div className="flex justify-between gap-4">
+                    <span className="font-semibold text-slate-500">결제 금액</span>
+                    <span className="font-bold">{formatPrice(totalPrice || 0)}</span>
                 </div>
             </div>
 
@@ -65,11 +66,11 @@ const DemoPayment = () => {
                 type="button"
                 onClick={handleSubmit}
                 disabled={loading}
-                className={`mt-6 w-full rounded-md px-4 py-3 font-semibold text-white transition ${
-                    loading ? "bg-slate-400" : "bg-slate-900 hover:bg-slate-700"
+                className={`mt-6 w-full rounded-lg px-4 py-3 font-bold text-white transition ${
+                    loading ? "bg-slate-400" : "bg-slate-950 hover:bg-slate-700"
                 }`}
             >
-                {loading ? "주문 처리 중..." : "주문 완료"}
+                {loading ? "주문 처리 중" : "주문 완료"}
             </button>
         </div>
     );
