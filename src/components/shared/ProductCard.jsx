@@ -1,5 +1,5 @@
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import truncateText from "../../utils/truncateText";
@@ -23,10 +23,26 @@ const ProductCard = ({
     about = false,
 }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const isAvailable = Number(quantity || 0) > 0;
     const resolvedCategoryName = categoryName || category?.categoryName || "전자기기";
 
-    const addToCartHandler = () => {
+    const moveToDetail = () => {
+        if (about) {
+            return;
+        }
+        navigate(`/products/${productId}`);
+    };
+
+    const handleCardKeyDown = (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            moveToDetail();
+        }
+    };
+
+    const addToCartHandler = (event) => {
+        event.stopPropagation();
         dispatch(
             addToCart(
                 {
@@ -51,11 +67,16 @@ const ProductCard = ({
     };
 
     return (
-        <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-            <Link
-                to={`/products/${productId}`}
-                className="relative block aspect-[16/11] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fafc,#eef2ff)]"
-            >
+        <div
+            role={about ? undefined : "link"}
+            tabIndex={about ? -1 : 0}
+            onClick={moveToDetail}
+            onKeyDown={handleCardKeyDown}
+            className={`group flex h-full flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
+                about ? "" : "cursor-pointer"
+            }`}
+        >
+            <div className="relative aspect-[16/11] w-full overflow-hidden bg-[linear-gradient(180deg,#f8fafc,#eef2ff)]">
                 <div className="absolute left-3 top-3 z-10 flex flex-wrap gap-2">
                     {discount > 0 ? (
                         <span className="rounded-md bg-rose-600 px-2.5 py-1 text-[11px] font-semibold text-white">
@@ -75,7 +96,7 @@ const ProductCard = ({
                     className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     alt={productName}
                 />
-            </Link>
+            </div>
 
             <div className="flex flex-1 flex-col p-5">
                 <div className="flex flex-wrap items-center gap-2">
@@ -89,12 +110,9 @@ const ProductCard = ({
                     ) : null}
                 </div>
 
-                <Link
-                    to={`/products/${productId}`}
-                    className="mb-2 mt-2 min-h-[56px] text-[1.05rem] font-semibold leading-7 text-slate-900 transition hover:text-slate-700"
-                >
+                <h2 className="mb-2 mt-2 min-h-[56px] text-[1.05rem] font-semibold leading-7 text-slate-900 transition group-hover:text-slate-700">
                     {truncateText(productName, 24)}
-                </Link>
+                </h2>
 
                 <div className="min-h-[84px]">
                     <p className="text-sm leading-6 text-slate-600">{truncateText(description, 84)}</p>
@@ -121,24 +139,18 @@ const ProductCard = ({
                             </span>
                         </div>
 
-                        <div className="mt-3 flex gap-2">
+                        <div className="mt-3 flex justify-end">
                             <button
+                                type="button"
+                                aria-label="장바구니 담기"
                                 disabled={!isAvailable}
                                 onClick={addToCartHandler}
-                                className={`flex flex-1 items-center justify-center rounded-xl px-3 py-2.5 text-sm font-semibold text-white transition-colors duration-300 ${
+                                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-sm font-semibold text-white transition-colors duration-300 ${
                                     isAvailable ? "bg-slate-900 hover:bg-slate-700" : "bg-slate-400"
                                 }`}
                             >
-                                <FaShoppingCart className="mr-2" />
-                                장바구니 담기
+                                <FaShoppingCart />
                             </button>
-
-                            <Link
-                                to={`/products/${productId}`}
-                                className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
-                            >
-                                상세 보기
-                            </Link>
                         </div>
                     </div>
                 )}
