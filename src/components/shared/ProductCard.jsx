@@ -114,6 +114,14 @@ const ProductCard = ({
                     {truncateText(productName, 24)}
                 </h2>
 
+                {!about && (
+                    <div className="mb-3">
+                        <span className="rounded-md bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-500">
+                            {isAvailable ? "즉시 구매 가능" : "현재 품절"}
+                        </span>
+                    </div>
+                )}
+
                 <div className="min-h-[84px]">
                     <p className="text-sm leading-6 text-slate-600">{truncateText(description, 84)}</p>
                 </div>
@@ -134,18 +142,12 @@ const ProductCard = ({
                                 <span className="text-xl font-bold text-slate-900">{formatPrice(price)}</span>
                             )}
 
-                            <span className="rounded-md bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-500">
-                                {isAvailable ? "즉시 구매 가능" : "현재 품절"}
-                            </span>
-                        </div>
-
-                        <div className="mt-3 flex justify-end">
                             <button
                                 type="button"
                                 aria-label="장바구니 담기"
                                 disabled={!isAvailable}
                                 onClick={addToCartHandler}
-                                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-sm font-semibold text-white transition-colors duration-300 ${
+                                className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-semibold text-white transition-colors duration-300 ${
                                     isAvailable ? "bg-slate-900 hover:bg-slate-700" : "bg-slate-400"
                                 }`}
                             >
