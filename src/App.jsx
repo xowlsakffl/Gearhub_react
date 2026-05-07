@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAddresses, getUserCart } from './store/actions';
 import AccountDashboard from './components/account/AccountDashboard';
 import OrderHistory from './components/account/OrderHistory';
+import ProductDetail from './components/products/ProductDetail';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/products' element={ <Products /> } />
+          <Route path='/products/:productId' element={ <ProductDetail /> } />
           <Route path='/about' element={ <About /> } />
           <Route path='/contact' element={ <Contact /> } />
           <Route path='/cart' element={ <Cart /> } />

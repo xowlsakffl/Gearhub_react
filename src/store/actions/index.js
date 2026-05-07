@@ -52,14 +52,17 @@ export const fetchCategories = () => async (dispatch) => {
 export const addToCart = (data, qty = 1, toast) =>
     (dispatch, getState) => {
         const { products } = getState().products;
-        const matchedProduct = products.find((item) => item.productId === data.productId);
+        const matchedProduct = products?.find((item) => item.productId === data.productId);
+        const availableQuantity = Number(
+            matchedProduct?.quantity ?? data?.availableQuantity ?? data?.quantity ?? 0
+        );
 
-        if (!matchedProduct) {
+        if (availableQuantity <= 0) {
             toast.error("상품 정보를 다시 불러와 주세요.");
             return;
         }
 
-        const hasEnoughQuantity = matchedProduct.quantity >= qty;
+        const hasEnoughQuantity = availableQuantity >= qty;
 
         if (hasEnoughQuantity) {
             dispatch({ type: "ADD_CART", payload: { ...data, quantity: qty } });
@@ -75,14 +78,17 @@ export const increaseCartQuantity =
     (data, toast, currentQuantity, setCurrentQuantity) =>
         (dispatch, getState) => {
             const { products } = getState().products;
-            const matchedProduct = products.find((item) => item.productId === data.productId);
+            const matchedProduct = products?.find((item) => item.productId === data.productId);
+            const availableQuantity = Number(
+                matchedProduct?.quantity ?? data?.availableQuantity ?? data?.quantity ?? 0
+            );
 
-            if (!matchedProduct) {
+            if (availableQuantity <= 0) {
                 toast.error("상품 정보를 다시 불러와 주세요.");
                 return;
             }
 
-            const hasEnoughQuantity = matchedProduct.quantity >= currentQuantity + 1;
+            const hasEnoughQuantity = availableQuantity >= currentQuantity + 1;
 
             if (hasEnoughQuantity) {
                 const newQuantity = currentQuantity + 1;
