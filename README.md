@@ -39,6 +39,32 @@ GearHub 서비스는 프론트엔드와 백엔드가 분리된 구조입니다.
 6. 주문 완료 후 마이페이지의 주문 내역에서 주문 상태와 상품 구성을 확인합니다.
 7. 관리자 계정은 `/admin`으로 진입해 전체 상품, 카테고리, 주문 상태를 운영합니다.
 
+## 화면 구성
+
+### 사용자 화면
+
+| 메인 | 스토어 |
+| --- | --- |
+| <img src="./public/main.png" width="100%" alt="GearHub 메인 화면" /> | <img src="./public/store.png" width="100%" alt="GearHub 스토어 화면" /> |
+
+| 장바구니 | 주문 완료 |
+| --- | --- |
+| <img src="./public/cart.png" width="100%" alt="GearHub 장바구니 화면" /> | <img src="./public/order_complete.png" width="100%" alt="GearHub 주문 완료 화면" /> |
+
+| 마이페이지 | 주문 내역 |
+| --- | --- |
+| <img src="./public/mypage.png" width="100%" alt="GearHub 마이페이지 화면" /> | <img src="./public/order_history.png" width="100%" alt="GearHub 주문 내역 화면" /> |
+
+### 관리자 화면
+
+| 관리자 대시보드 | 상품 관리 |
+| --- | --- |
+| <img src="./public/admin_main.png" width="100%" alt="GearHub 관리자 대시보드" /> | <img src="./public/admin_product.png" width="100%" alt="GearHub 관리자 상품 관리" /> |
+
+| 카테고리 관리 | 주문 관리 |
+| --- | --- |
+| <img src="./public/admin_category.png" width="100%" alt="GearHub 관리자 카테고리 관리" /> | <img src="./public/admin_order.png" width="100%" alt="GearHub 관리자 주문 관리" /> |
+
 ## 주요 기능
 
 ### 1. 사용자 쇼핑몰
