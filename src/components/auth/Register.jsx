@@ -27,42 +27,37 @@ const Register = () => {
     };
 
     return (
-        <div className="flex min-h-[calc(100vh-70px)] items-center bg-slate-50 px-4 py-12 font-notosans">
-            <div className="mx-auto grid w-full max-w-[1360px] items-start gap-8 lg:grid-cols-[1.1fr_430px]">
-                <section className="self-start rounded-2xl bg-white px-6 py-8 shadow-lg sm:px-8">
-                    <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Join GearHub</p>
-                    <h1 className="mt-4 max-w-[18ch] text-3xl font-bold leading-tight text-slate-900 sm:text-[2.15rem] xl:text-[2.35rem]">
-                        자주 쓰는 전자제품 쇼핑을 위한 계정 만들기
-                    </h1>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
-                        계정을 만들면 장바구니 저장, 배송지 관리, 주문 이력 확인까지 더 편하게 이어서 사용할 수 있습니다.
+        <div className="flex min-h-[calc(100vh-78px)] items-center justify-center bg-slate-50 px-4 py-12 font-notosans">
+            <div className="w-full max-w-[560px] rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <div className="flex flex-col items-center text-center">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white">
+                        <FaUserPlus className="text-2xl" />
+                    </div>
+                    <p className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-slate-400">
+                        Create Account
                     </p>
+                    <h1 className="mt-3 text-3xl font-bold text-slate-900">회원가입</h1>
+                    <p className="mt-3 text-sm leading-7 text-slate-500">
+                        계정을 만들면 장바구니, 배송지, 주문 내역을 한 번에 관리할 수 있습니다.
+                    </p>
+                </div>
 
-                    <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                        {[
-                            { title: "장바구니 유지", desc: "담아 둔 상품을 로그인 후에도 바로 이어서 확인할 수 있습니다." },
-                            { title: "배송지 관리", desc: "저장된 배송지를 다음 주문에도 다시 선택할 수 있습니다." },
-                            { title: "주문 이력", desc: "이전에 주문한 제품과 결제 정보를 한곳에서 확인할 수 있습니다." },
-                        ].map((item) => (
-                            <div key={item.title} className="rounded-xl bg-slate-50 p-4">
-                                <p className="font-semibold text-slate-900">{item.title}</p>
-                                <p className="mt-2 text-sm leading-6 text-slate-500">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                <div className="mt-8 grid gap-2">
+                    {[
+                        "장바구니 상품을 바로 이어서 확인",
+                        "배송지 정보를 저장하고 빠르게 주문",
+                        "주문 내역과 결제 흐름을 한 화면에서 관리",
+                    ].map((item) => (
+                        <div
+                            key={item}
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600"
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
 
-                <form
-                    onSubmit={handleSubmit(registerHandler)}
-                    className="self-start rounded-2xl bg-white px-4 py-8 shadow-lg sm:px-8"
-                >
-                    <div className="flex flex-col items-center justify-center space-y-4">
-                        <FaUserPlus className="text-3xl text-slate-800" />
-                        <h2 className="text-center text-2xl font-bold text-slate-800 sm:text-3xl">회원가입</h2>
-                        <p className="text-sm text-slate-500">기본 정보를 입력하고 쇼핑을 시작하세요.</p>
-                    </div>
-
-                    <hr className="mb-5 mt-4 text-black" />
+                <form onSubmit={handleSubmit(registerHandler)} className="mt-8">
                     <div className="flex flex-col gap-3">
                         <InputField
                             label="아이디"
@@ -101,7 +96,7 @@ const Register = () => {
 
                     <button
                         disabled={loader}
-                        className="my-3 flex w-full items-center justify-center gap-2 rounded-md bg-slate-900 py-3 font-semibold text-white transition hover:bg-slate-700"
+                        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 font-semibold text-white transition hover:bg-slate-700"
                         type="submit"
                     >
                         {loader ? (
@@ -115,8 +110,8 @@ const Register = () => {
 
                     <p className="mt-6 text-center text-sm text-slate-700">
                         이미 계정이 있나요?
-                        <Link className="font-semibold underline hover:text-black" to="/login">
-                            <span> 로그인</span>
+                        <Link className="ml-1 font-semibold underline hover:text-black" to="/login">
+                            로그인
                         </Link>
                     </p>
                 </form>
